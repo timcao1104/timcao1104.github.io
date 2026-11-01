@@ -1,0 +1,89 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Tim 的游戏墙</title>
+<meta property="og:title" content="Tim 的游戏墙"><meta property="og:description" content="PS5 × Steam 战绩与游戏库"><meta property="og:image" content="og.jpg"><meta name="theme-color" content="#07080f">
+<style>
+:root{--bg:#07080f;--p:#11131d;--l:rgba(255,255,255,.08);--t:#f3f5fa;--s:#a3abc2;--d:#6b7390;--ps:#2f7bff;--st:#66c0f4;--a:#7c5cff}
+*{box-sizing:border-box;margin:0}html{-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--t);font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC","Noto Sans SC",sans-serif;-webkit-font-smoothing:antialiased;line-height:1.45}
+.wrap{max-width:1200px;margin:0 auto;padding:0 16px}
+.hero{position:relative;overflow:hidden;min-height:420px;display:flex;align-items:flex-end}
+.hero .bgi{position:absolute;inset:-30px;background-size:cover;background-position:center;filter:blur(24px) saturate(1.3);opacity:.7}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,8,15,.2),rgba(7,8,15,.55) 45%,var(--bg))}
+.hero .in{position:relative;z-index:1;display:flex;gap:18px;align-items:flex-end;padding:72px 16px 24px;max-width:1200px;margin:0 auto;width:100%}
+.hero img{width:120px;aspect-ratio:2/3;object-fit:cover;border-radius:14px;box-shadow:0 18px 50px rgba(0,0,0,.6)}
+.eyebrow{font-size:12px;letter-spacing:3px;color:var(--s)}
+.hero h1{font-size:30px;font-weight:800;margin:4px 0}
+.hero .meta{color:var(--s);font-size:13px}
+.bar{height:4px;border-radius:2px;background:rgba(255,255,255,.12);overflow:hidden}.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--ps),var(--a))}
+.card{margin-top:8px;background:linear-gradient(150deg,#141a33,#0e1020);border:1px solid var(--l);border-radius:22px;padding:20px}
+.who{display:flex;align-items:center;gap:14px}.av{width:56px;height:56px;border-radius:16px;background:linear-gradient(135deg,var(--ps),var(--a));display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:900}
+.who b{font-size:24px;display:block;line-height:1.1}.who span{color:var(--s);font-size:13px}
+.lv{margin-left:auto;text-align:center;padding:6px 14px;border-radius:12px;background:rgba(124,92,255,.18);border:1px solid rgba(124,92,255,.4)}.lv small{font-size:10px;letter-spacing:2px;color:var(--s);display:block}.lv b{font-size:24px}
+.tro{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:18px 0}.tro div{text-align:center;padding:10px 0;border-radius:14px;background:rgba(255,255,255,.04)}
+.tro svg{width:22px;height:22px}.tro b{display:block;font-size:20px}.tro span{font-size:11px;color:var(--s)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.stats b{display:block;font-size:20px}.stats span{font-size:11px;color:var(--s)}
+.slogan{margin-top:16px;color:var(--s);font-size:14px}
+h2{font-size:20px;margin:32px 0 14px;display:flex;align-items:baseline;gap:8px}h2 small{color:var(--d);font-size:13px;font-weight:500}
+.ctl{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.chip{border:1px solid var(--l);background:transparent;color:var(--s);padding:8px 14px;border-radius:999px;font-size:13px;font-weight:600;font-family:inherit}
+.chip.on{background:var(--t);color:var(--bg);border-color:transparent}
+select,input{background:var(--p);color:var(--t);border:1px solid var(--l);border-radius:999px;padding:8px 14px;font-size:14px;font-family:inherit;outline:none}
+input{flex:1 1 160px;min-width:0}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media(min-width:640px){.grid{grid-template-columns:repeat(4,1fr)}.hero img{width:160px}.hero h1{font-size:40px}}
+@media(min-width:960px){.grid{grid-template-columns:repeat(6,1fr);gap:18px}.top{display:grid;grid-template-columns:1fr 420px;gap:24px;align-items:end}.card{margin-top:0}}
+.g{cursor:pointer;-webkit-tap-highlight-color:transparent}
+.cv{position:relative;aspect-ratio:2/3;border-radius:12px;overflow:hidden;background:var(--p);box-shadow:0 0 0 1px var(--l);transition:transform .25s,box-shadow .25s}
+.cv img{width:100%;height:100%;object-fit:cover;display:block}
+.g:hover .cv{transform:translateY(-6px) scale(1.02);box-shadow:0 14px 34px rgba(47,123,255,.35),0 0 0 2px var(--ps)}
+.g.steam:hover .cv{box-shadow:0 14px 34px rgba(102,192,244,.3),0 0 0 2px var(--st)}
+.tag{position:absolute;top:6px;left:6px;font-size:9px;font-weight:800;letter-spacing:.5px;padding:2px 6px;border-radius:5px;background:var(--ps);color:#fff}.steam .tag{background:#1b2838;box-shadow:inset 0 0 0 1px var(--st)}
+.cv .bar{position:absolute;left:0;right:0;bottom:0;border-radius:0;height:4px}
+.g p{font-size:13px;font-weight:700;margin-top:8px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.g small{font-size:11px;color:var(--d)}
+.modal{position:fixed;inset:0;z-index:9;background:rgba(3,4,8,.8);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);display:none;align-items:flex-end;justify-content:center}
+.modal.open{display:flex}
+.sheet{position:relative;width:100%;max-width:560px;max-height:88vh;overflow-y:auto;-webkit-overflow-scrolling:touch;background:var(--p);border-radius:22px 22px 0 0;border:1px solid var(--l);padding:20px 20px calc(24px + env(safe-area-inset-bottom))}
+@media(min-width:640px){.modal{align-items:center}.sheet{border-radius:22px}}
+.sheet .x{position:absolute;top:12px;right:12px;width:36px;height:36px;border-radius:50%;border:0;background:rgba(255,255,255,.1);color:var(--t);font-size:20px}
+.sh{display:flex;gap:16px}.sh img{width:120px;aspect-ratio:2/3;object-fit:cover;border-radius:12px}
+.sheet h3{font-size:22px;margin:8px 0 2px;padding-right:36px}.sheet .en{color:var(--s);font-size:13px}
+.kv{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--l);font-size:14px}.kv span{color:var(--s)}
+footer{color:var(--d);font-size:12px;padding:40px 0 calc(40px + env(safe-area-inset-bottom));line-height:1.7}
+</style></head><body>
+<section class="hero"><div class="bgi" id="hbg"></div><div class="in"><div class="top" style="width:100%"><div style="display:flex;gap:18px;align-items:flex-end" id="hero"></div><div class="card" id="card"></div></div></div></section>
+<main class="wrap"><h2>游戏库 <small id="cnt"></small></h2>
+<div class="ctl" id="plat"><button class="chip on" data-v="all">全部</button><button class="chip" data-v="PS5">PS5</button><button class="chip" data-v="Steam">Steam</button>
+<select id="sort"><option value="recent">最近游玩</option><option value="progress">进度最高</option><option value="time">时长最长</option><option value="name">名称</option></select>
+<input id="q" type="search" placeholder="搜索游戏"></div>
+<div class="grid" id="grid"></div>
+<footer id="foot"></footer></main>
+<div class="modal" id="m"><div class="sheet" id="sheet"></div></div>
+<script>
+const D={"updated": "2026-11-01 12:15 北京时间", "slogan": "白金不多，但每一座都是硬仗。", "steamGames": 8, "steamMin": 566, "psn": {"updated": "2026-10-29", "psn": "Timmm1104", "level": 128, "platinum": 2, "gold": 12, "silver": 53, "bronze": 347, "games": 81, "completion": "9.82%"}, "games": [{"id": "ps-4115450", "platform": "PS5", "order": 1, "name": "Phantom Blade Zero", "cn": "影之刃零", "lastPlayed": "2026-10-29", "progress": 9, "appid": 4115450}, {"id": "ps-740130", "platform": "PS5", "order": 2, "name": "Tales of Arise", "cn": "破晓传说", "lastPlayed": "2026-10-27", "progress": 4, "appid": 740130}, {"id": "ps-1340990", "platform": "PS5", "order": 3, "name": "Rise of the Ronin", "cn": "浪人崛起", "lastPlayed": "2026-10-25", "progress": 7, "appid": 1340990}, {"id": "ps-2344520", "platform": "PS5", "order": 4, "name": "Diablo IV", "cn": "暗黑破坏神4", "lastPlayed": "2026-10-13", "progress": 12, "appid": 2344520}, {"id": "ps-1771300", "platform": "PS5", "order": 5, "name": "Kingdom Come: Deliverance II", "cn": "天国：拯救2", "progress": 0, "appid": 1771300}, {"id": "ps-812140", "platform": "PS5", "order": 6, "name": "Assassin's Creed Odyssey", "cn": "刺客信条奥德赛", "lastPlayed": "2026-10-08", "appid": 812140}, {"id": "ps-2651280", "platform": "PS5", "order": 7, "name": "Marvel's Spider-Man 2", "cn": "漫威蜘蛛侠2", "appid": 2651280}, {"id": "ps-2751000", "platform": "PS5", "order": 8, "name": "Prince of Persia: The Lost Crown", "cn": "波斯王子：失落的王冠", "appid": 2751000}, {"id": "ps-3564740", "platform": "PS5", "order": 9, "name": "Where Winds Meet", "cn": "燕云十六声", "appid": 3564740}, {"id": "ps-990080", "platform": "PS5", "order": 10, "name": "Hogwarts Legacy", "cn": "霍格沃茨之遗", "appid": 990080}, {"id": "ps-1091500", "platform": "PS5", "order": 11, "name": "Cyberpunk 2077", "cn": "赛博朋克2077", "appid": 1091500}, {"id": "ps-2767030", "platform": "PS5", "order": 12, "name": "Marvel Rivals", "cn": "漫威争锋", "appid": 2767030}, {"id": "st-1794680", "platform": "Steam", "name": "Vampire Survivors", "cn": "吸血鬼幸存者", "appid": 1794680, "order": 1, "minutes": 91, "minutes2w": 91, "lastPlayed": "2026-10-29", "achieved": [8, 243], "progress": 3}, {"id": "st-1868140", "platform": "Steam", "name": "DAVE THE DIVER", "cn": "潜水员戴夫", "appid": 1868140, "order": 2, "minutes": 179, "minutes2w": 179, "lastPlayed": "2026-10-28", "achieved": [8, 56], "progress": 14}, {"id": "st-1145350", "platform": "Steam", "name": "Hades II", "cn": "哈迪斯2", "appid": 1145350, "order": 3, "minutes": 177, "minutes2w": 177, "lastPlayed": "2026-10-28", "achieved": [1, 50], "progress": 2}, {"id": "st-990080", "platform": "Steam", "name": "Hogwarts Legacy", "cn": "霍格沃茨之遗", "appid": 990080, "order": 4, "minutes": 119, "lastPlayed": "2023-11-17", "achieved": [2, 45], "progress": 4}, {"id": "st-1468810", "platform": "Steam", "name": "鬼谷八荒 Tale of Immortal", "cn": "鬼谷八荒", "appid": 1468810, "order": 5, "minutes": 0}, {"id": "st-1876890", "platform": "Steam", "name": "Wandering Sword", "cn": "逸剑风云决", "appid": 1876890, "order": 6, "minutes": 0}, {"id": "st-1948980", "platform": "Steam", "name": "Hero's Adventure: Road to Passion", "cn": "大侠立志传", "appid": 1948980, "order": 7, "minutes": 0}, {"id": "st-2379780", "platform": "Steam", "name": "Balatro", "cn": "小丑牌", "appid": 2379780, "order": 8, "minutes": 0}]};
+const $=s=>document.querySelector(s),h=m=>m>=60?(m/60).toFixed(1)+' 小时':m>0?m+' 分钟':'未开玩';
+const cv=g=>'covers/'+g.appid+'.webp',esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const P=D.psn,G=D.games,R=G.filter(g=>g.lastPlayed).sort((a,b)=>b.lastPlayed.localeCompare(a.lastPlayed)||a.order-b.order);
+const hero=R[0];$('#hbg').style.backgroundImage=`url(${cv(hero)})`;
+$('#hero').innerHTML=`<img src="${cv(hero)}" alt=""><div style="flex:1;min-width:0"><div class="eyebrow">正在攻略 · ${hero.platform}</div><h1>${esc(hero.cn)}</h1><div class="meta">${esc(hero.name)} · 最近 ${hero.lastPlayed}</div>${hero.progress!=null?`<div class="bar" style="margin-top:10px;max-width:220px"><i style="width:${Math.max(hero.progress,2)}%"></i></div><div class="meta" style="margin-top:4px">奖杯 ${hero.progress}%</div>`:''}</div>`;
+const T='M7 3h10v3h3v2a4 4 0 0 1-4 4h-.4A5 5 0 0 1 13 14.9V18h3v3H8v-3h3v-3.1A5 5 0 0 1 8.4 12H8a4 4 0 0 1-4-4V6h3V3z';
+$('#card').innerHTML=`<div class="who"><div class="av">T</div><div><b>Tim</b><span>PSN ${esc(P.psn)}</span></div><div class="lv"><small>LEVEL</small><b>${P.level}</b></div></div>
+<div class="tro">${[['platinum','白金','#dfe8f7'],['gold','金','#e8b84a'],['silver','银','#c3c9d4'],['bronze','铜','#c27a4a']].map(([k,l,c])=>`<div><svg viewBox="0 0 24 24"><path d="${T}" fill="${c}"/></svg><b>${P[k]}</b><span>${l}</span></div>`).join('')}</div>
+<div class="stats"><div><b>${P.games+D.steamGames}</b><span>游戏总数</span></div><div><b>${(D.steamMin/60).toFixed(1)}h</b><span>Steam 时长</span></div><div><b>${P.completion}</b><span>奖杯完成率</span></div></div>
+<div class="slogan">“${esc(D.slogan)}” · 最近在玩 ${R.slice(0,4).map(g=>esc(g.cn)).join(' / ')}</div>`;
+$('#foot').innerHTML=`数据更新：Steam ${D.updated}（Steam Web API）；PS5 截至 ${P.updated}（PSNProfiles ${esc(P.psn)}，共 ${P.games} 款，此处展示最近 ${G.filter(g=>g.platform=='PS5').length} 款）。进度为奖杯/成就完成率，未获取到的不显示。封面来自 Steam 商店。`;
+let plat='all';
+function draw(){const q=$('#q').value.trim().toLowerCase(),s=$('#sort').value;
+ const L=G.filter(g=>(plat=='all'||g.platform==plat)&&(!q||(g.name+g.cn).toLowerCase().includes(q))).sort((a,b)=>s=='progress'?(b.progress??-1)-(a.progress??-1):s=='time'?(b.minutes??-1)-(a.minutes??-1):s=='name'?a.cn.localeCompare(b.cn,'zh'):(b.lastPlayed||'').localeCompare(a.lastPlayed||'')||a.order-b.order);
+ $('#cnt').textContent=L.length+' 款';
+ $('#grid').innerHTML=L.map(g=>`<div class="g ${g.platform=='Steam'?'steam':''}" data-id="${g.id}"><div class="cv"><img loading="lazy" src="${cv(g)}" alt=""><span class="tag">${g.platform}</span>${g.progress!=null?`<div class="bar"><i style="width:${Math.max(g.progress,2)}%"></i></div>`:''}</div><p>${esc(g.cn)}</p><small>${[g.lastPlayed?g.lastPlayed.slice(5).replace('-','/'):'',g.minutes!=null?h(g.minutes):'',g.progress!=null?g.progress+'%':''].filter(Boolean).join(' · ')||'&nbsp;'}</small></div>`).join('');}
+$('#plat').onclick=e=>{const b=e.target.closest('.chip');if(!b)return;plat=b.dataset.v;document.querySelectorAll('.chip').forEach(c=>c.classList.toggle('on',c==b));draw()};
+$('#sort').onchange=draw;$('#q').oninput=draw;
+$('#grid').onclick=e=>{const c=e.target.closest('.g');if(!c)return;const g=G.find(x=>x.id==c.dataset.id);
+ const kv=[g.lastPlayed&&['最近游玩',g.lastPlayed],g.progress!=null&&[g.platform=='PS5'?'奖杯进度':'成就进度',g.progress+'%'+(g.achieved?`（${g.achieved[0]}/${g.achieved[1]}）`:'')],g.minutes!=null&&['总时长',h(g.minutes)],g.minutes2w&&['近两周',h(g.minutes2w)]].filter(Boolean);
+ $('#sheet').innerHTML=`<button class="x" aria-label="关闭">×</button><div class="sh"><img src="${cv(g)}" alt=""><div style="flex:1;min-width:0"><span class="tag" style="position:static">${g.platform}</span><h3>${esc(g.cn)}</h3><div class="en">${esc(g.name)}</div></div></div><div style="margin-top:14px">${kv.map(([k,v])=>`<div class="kv"><span>${k}</span><b>${v}</b></div>`).join('')}</div>${g.progress!=null?`<div class="bar" style="margin-top:14px;height:6px"><i style="width:${Math.max(g.progress,2)}%"></i></div>`:''}`;
+ $('#m').classList.add('open');document.body.style.overflow='hidden'};
+function close(){$('#m').classList.remove('open');document.body.style.overflow=''}
+$('#m').onclick=e=>{if(e.target.id=='m'||e.target.closest('.x'))close()};document.onkeydown=e=>{if(e.key=='Escape')close()};
+draw();
+</script></body></html>
